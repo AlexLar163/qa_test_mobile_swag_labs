@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty"},
         features = "src/test/resources/features",
-        glue = "com.alexlar163.stepdefs"
-//        tags = "@login_username_input_test_fail"
+        glue = "com.alexlar163.stepdefs",
+        tags = "@logout_test"
 )
 public class RunnerTest {
 }

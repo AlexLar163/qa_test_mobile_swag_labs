@@ -4,18 +4,21 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginScreen extends PageObject {
     @AndroidFindBy(xpath="//android.widget.EditText[@content-desc=\"test-Username\"]")
     private WebElement txtUsername;
 
-    @AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"\uF057\"])[1]")
+    @AndroidFindBy(xpath = "//android.widget.ScrollView[@content-desc=\"test-Login\"]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup")
     private WebElement txtUsernameErrorIcon;
 
     @AndroidFindBy(xpath="//android.widget.EditText[@content-desc=\"test-Password\"]")
     private WebElement txtPassword;
 
-    @AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"\uF057\"])[2]")
+    @AndroidFindBy(xpath = "//android.widget.ScrollView[@content-desc=\"test-Login\"]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup")
     private WebElement txtPasswordErrorIcon;
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")
@@ -37,27 +40,54 @@ public class LoginScreen extends PageObject {
     }
 
     public boolean isErrorDisplayed() {
-        waitFor(ExpectedConditions.visibilityOf(lblLoginError));
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.visibilityOf(lblLoginError));
 
-        return lblLoginError.isDisplayed();
+            return lblLoginError.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public String getErrorMessage() {
-        waitFor(ExpectedConditions.visibilityOf(lblLoginError));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(lblLoginError));
 
         return lblLoginError.getText();
     }
 
     public boolean isErrorUsernameIconDisplayed() {
-        waitFor(ExpectedConditions.visibilityOf(txtUsernameErrorIcon));
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.visibilityOf(txtUsernameErrorIcon));
 
-        return txtUsernameErrorIcon.isDisplayed();
+            return txtUsernameErrorIcon.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean isErrorPasswordIconDisplayed() {
-        waitFor(ExpectedConditions.visibilityOf(txtPasswordErrorIcon));
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.visibilityOf(txtPasswordErrorIcon));
 
-        return txtPasswordErrorIcon.isDisplayed();
+            return txtPasswordErrorIcon.isDisplayed();
+        }catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isLoginButtonDisplayed() {
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.visibilityOf(btnLogin));
+
+            return btnLogin.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

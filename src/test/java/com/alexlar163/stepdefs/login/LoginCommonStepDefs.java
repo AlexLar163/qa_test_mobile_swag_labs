@@ -3,7 +3,6 @@ package com.alexlar163.stepdefs.login;
 import com.alexlar163.steps.login.LoginSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
 

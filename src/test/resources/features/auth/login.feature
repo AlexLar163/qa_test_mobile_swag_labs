@@ -11,12 +11,12 @@ Feature:  Login
         And password: "<password>"
         And I tap on the login button
         Then I validate that the input has an error message: "<message>"
-#        And I validate that the login username input show error
+        And I validate that the login username input show error: "<show_error>"
         Examples:
-            | case           | username        | password     | message                                                      |
-            | Empty username |                 | password123  | Username is required                                         |
-            | Wrong username | wrong-user123   | password123  | Username and password do not match any user in this service. |
-            | Locked out     | locked_out_user | secret_sauce | Sorry, this user has been locked out.                        |
+            | case            | username        | password     | message                                                      | show_error |
+            | Empty username  |                 | password123  | Username is required                                         | true       |
+            | Wrong username  | wrong-user123   | password123  | Username and password do not match any user in this service. | true       |
+            | Locked out user | locked_out_user | secret_sauce | Sorry, this user has been locked out.                        | false      |
 
     @login_password_input_test_fail
     Scenario Outline:  Log in failed: "<case>"
@@ -25,6 +25,7 @@ Feature:  Login
         And password: "<password>"
         And I tap on the login button
         Then I validate that the input has an error message: "<message>"
+        And I validate that the login password input show error
         Examples:
             | case           | username      | password | message                                                      |
             | Empty password | standard_user |          | Password is required                                         |

@@ -20,7 +20,7 @@
         <tags></tags>
         <parallel.tests>4</parallel.tests>
         <webdriver.base.url></webdriver.base.url>
-        <appium.version>7.3.0</appium.version>
+        <appium.version>8.3.0</appium.version>
     </properties>
     <dependencies>
 <!--        <dependency>-->
