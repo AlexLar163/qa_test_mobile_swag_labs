@@ -3,6 +3,7 @@ package com.alexlar163.steps.logout;
 import com.alexlar163.screens.login.LoginScreen;
 import com.alexlar163.screens.menu.MenuScreen;
 import net.serenitybdd.annotations.Step;
+import org.junit.Assert;
 
 public class LogoutSteps {
     MenuScreen menuScreen;
@@ -20,7 +21,7 @@ public class LogoutSteps {
 
     @Step
     public void validateBtnLoginDisplayed() {
-        loginScreen.isLoginButtonDisplayed();
+        Assert.assertTrue("The login button is not displayed", loginScreen.isLoginButtonDisplayed());
     }
 
 }

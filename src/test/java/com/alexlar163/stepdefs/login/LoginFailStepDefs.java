@@ -16,10 +16,6 @@ public class LoginFailStepDefs {
         loginSteps.validateUsernameErrorMessage(message);
     }
 
-    @And("I validate that the login username input show error")
-    public void iValidateThatTheLoginUsernameInputShowError() {
-    }
-
     @And("I validate that the login username input show error: {string}")
     public void iValidateThatTheLoginUsernameInputShowError(String showError) {
         loginSteps.validateUsernameInputError(Boolean.parseBoolean(showError));

@@ -41,7 +41,7 @@ public class LoginScreen extends PageObject {
 
     public boolean isErrorDisplayed() {
         try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOf(lblLoginError));
 
             return lblLoginError.isDisplayed();
@@ -51,15 +51,19 @@ public class LoginScreen extends PageObject {
     }
 
     public String getErrorMessage() {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOf(lblLoginError));
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOf(lblLoginError));
 
-        return lblLoginError.getText();
+            return lblLoginError.getText();
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     public boolean isErrorUsernameIconDisplayed() {
         try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOf(txtUsernameErrorIcon));
 
             return txtUsernameErrorIcon.isDisplayed();
@@ -70,7 +74,7 @@ public class LoginScreen extends PageObject {
 
     public boolean isErrorPasswordIconDisplayed() {
         try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOf(txtPasswordErrorIcon));
 
             return txtPasswordErrorIcon.isDisplayed();
@@ -81,7 +85,7 @@ public class LoginScreen extends PageObject {
 
     public boolean isLoginButtonDisplayed() {
         try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOf(btnLogin));
 
             return btnLogin.isDisplayed();

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         features = "src/test/resources/features",
         glue = "com.alexlar163.stepdefs",
-        tags = "@logout_test"
+        tags = "@menu_redirect_to_all_items_test"
 )
 public class RunnerTest {
 }
